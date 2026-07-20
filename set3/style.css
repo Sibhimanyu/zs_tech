@@ -88,6 +88,16 @@ body {
   flex-shrink: 0;
 }
 
+.login-link {
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.login-link:hover {
+  color: #1a1f36;
+}
+
 .btn-primary {
   display: inline-block;
   background: #4f46e5;
@@ -158,6 +168,10 @@ body {
 
 .mobile-menu .btn-primary {
   text-align: center;
+}
+
+.mobile-menu .login-link {
+  align-self: flex-start;
 }
 
 @media (max-width: 720px) {
