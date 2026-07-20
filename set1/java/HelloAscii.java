@@ -7,5 +7,6 @@ public class HelloAscii {
             sb.append((char) c);
         }
         System.out.println(sb.toString());
+
     }
 }
