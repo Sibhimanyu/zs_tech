@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nimbus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" />
+
+  <header class="navbar">
+    <a class="brand" href="#">
+      <span class="brand-mark">N</span>
+      Nimbus
+    </a>
+
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Docs</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="login-link" href="#">Log in</a>
+      <a class="btn-primary" href="#">Get Started</a>
+    </div>
+
+    <label class="nav-toggle" for="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <ul class="nav-links">
+      <li><a href="#">Product</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">Pricing</a></li>
+    </ul>
+    <a class="login-link" href="#">Log in</a>
+    <a class="btn-primary" href="#">Get Started</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-copy">
+          <h1 class="hero-heading">
+            The one place for your team's
+            <span class="rotating-word" aria-hidden="true">
+              <span class="rotating-word-item">docs.</span>
+              <span class="rotating-word-item">tasks.</span>
+              <span class="rotating-word-item">chats.</span>
+              <span class="rotating-word-item">ideas.</span>
+            </span>
+            <span class="visually-hidden">docs, tasks, chats and ideas.</span>
+          </h1>
+          <p class="hero-subtext">
+            Nimbus brings your team's docs, tasks and conversations into one calm
+            workspace, so nothing gets lost between apps.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary btn-large" href="#">Get Started</a>
+            <a class="hero-secondary-link" href="#">
+              See how it works
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img
+            src="assets/hero-illustration.svg"
+            alt="Illustration of the Nimbus product dashboard showing tasks, a document preview, a team chat and a weekly activity chart, with a small person looking on"
+            width="640"
+            height="520"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
