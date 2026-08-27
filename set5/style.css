@@ -10,6 +10,9 @@ body {
 }
 
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -141,15 +144,15 @@ body {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.nav-toggle-checkbox:checked ~ .navbar .nav-toggle span:nth-child(1) {
+.nav-toggle-checkbox:checked~.navbar .nav-toggle span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
 
-.nav-toggle-checkbox:checked ~ .navbar .nav-toggle span:nth-child(2) {
+.nav-toggle-checkbox:checked~.navbar .nav-toggle span:nth-child(2) {
   opacity: 0;
 }
 
-.nav-toggle-checkbox:checked ~ .navbar .nav-toggle span:nth-child(3) {
+.nav-toggle-checkbox:checked~.navbar .nav-toggle span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -191,7 +194,7 @@ body {
     display: flex;
   }
 
-  .nav-toggle-checkbox:checked ~ .mobile-menu {
+  .nav-toggle-checkbox:checked~.mobile-menu {
     display: flex;
   }
 }
@@ -311,6 +314,7 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+
   .hero-heading,
   .hero-subtext,
   .hero-actions,
@@ -354,6 +358,7 @@ body {
 }
 
 @keyframes hero-float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -398,7 +403,7 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .rotating-word-item {
-    animation: rotate-word 8s ease-in-out infinite;
+    animation: rotate-word 10s ease-in-out infinite;
   }
 
   .rotating-word-item:nth-child(1) {
@@ -416,6 +421,10 @@ body {
   .rotating-word-item:nth-child(4) {
     animation-delay: 6s;
   }
+
+  .rotating-word-item:nth-child(5) {
+    animation-delay: 8s;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -431,17 +440,17 @@ body {
     transform: translateY(0.3em);
   }
 
-  6% {
+  5% {
     opacity: 1;
     transform: translateY(0);
   }
 
-  19% {
+  12% {
     opacity: 1;
     transform: translateY(0);
   }
 
-  25% {
+  20% {
     opacity: 0;
     transform: translateY(-0.3em);
   }
@@ -450,4 +459,5 @@ body {
     opacity: 0;
     transform: translateY(-0.3em);
   }
+
 }
