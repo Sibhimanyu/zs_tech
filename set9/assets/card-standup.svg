@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="">
+  <defs>
+    <linearGradient id="s-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f3ff" />
+      <stop offset="100%" stop-color="#ede9fe" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#s-bg)" />
+  <rect x="52" y="60" width="296" height="180" rx="14" fill="#ffffff" />
+  <rect x="52" y="60" width="296" height="34" rx="14" fill="#4f46e5" />
+  <rect x="52" y="80" width="296" height="14" fill="#4f46e5" />
+  <circle cx="72" cy="77" r="5" fill="#c7d2fe" />
+  <circle cx="88" cy="77" r="5" fill="#a5b4fc" />
+  <rect x="106" y="72" width="72" height="9" rx="4.5" fill="#818cf8" />
+  <circle cx="88" cy="128" r="14" fill="#c7d2fe" />
+  <rect x="112" y="118" width="84" height="8" rx="4" fill="#e5e7eb" />
+  <rect x="112" y="134" width="130" height="7" rx="3.5" fill="#f3f4f6" />
+  <circle cx="88" cy="176" r="14" fill="#ddd6fe" />
+  <rect x="112" y="166" width="104" height="8" rx="4" fill="#e5e7eb" />
+  <rect x="112" y="182" width="72" height="7" rx="3.5" fill="#f3f4f6" />
+  <rect x="264" y="112" width="66" height="24" rx="6" fill="#eef2ff" />
+  <rect x="274" y="121" width="30" height="6" rx="3" fill="#a5b4fc" />
+  <rect x="264" y="146" width="66" height="24" rx="6" fill="#f5f3ff" />
+  <rect x="274" y="155" width="42" height="6" rx="3" fill="#c4b5fd" />
+  <rect x="264" y="180" width="66" height="24" rx="6" fill="#ecfdf5" />
+  <rect x="274" y="189" width="24" height="6" rx="3" fill="#6ee7b7" />
+</svg>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nimbus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" />
+
+  <header class="navbar">
+    <a class="brand" href="#">
+      <span class="brand-mark">N</span>
+      Nimbus
+    </a>
+
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#features">Product</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#stories">Docs</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="login-link" href="#">Log in</a>
+      <a class="btn-primary" href="#">Get Started</a>
+    </div>
+
+    <label class="nav-toggle" for="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <ul class="nav-links">
+      <li><a href="#features">Product</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#stories">Docs</a></li>
+      <li><a href="#">Pricing</a></li>
+    </ul>
+    <a class="login-link" href="#">Log in</a>
+    <a class="btn-primary" href="#">Get Started</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-copy">
+          <h1 class="hero-heading">
+            The one place for your team's
+            <span class="rotating-word" aria-hidden="true">
+              <span class="rotating-word-item">docs.</span>
+              <span class="rotating-word-item">tasks.</span>
+              <span class="rotating-word-item">chats.</span>
+              <span class="rotating-word-item">ideas.</span>
+            </span>
+            <span class="visually-hidden">docs, tasks, chats and ideas.</span>
+          </h1>
+          <p class="hero-subtext">
+            Nimbus brings your team's docs, tasks and conversations into one calm
+            workspace, so nothing gets lost between apps.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary btn-large" href="#">Get Started</a>
+            <a class="hero-secondary-link" href="#features">
+              See how it works
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img src="assets/hero-illustration.svg"
+            alt="Illustration of the Nimbus product dashboard showing tasks, a document preview, a team chat and a weekly activity chart, with a small person looking on"
+            width="640" height="520" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Card section 1: the card markup, arranged in three columns by .card-grid -->
+    <section class="section" id="features">
+      <div class="section-container">
+        <header class="section-head">
+          <p class="section-eyebrow">Features</p>
+          <h2 class="section-heading">Six tools that stopped being six tabs</h2>
+          <p class="section-subtext">
+            Every part of Nimbus writes to the same workspace, so the thing you
+            wrote this morning is already where you need it this afternoon.
+          </p>
+        </header>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-media">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 3h8l4 4v14H6z" />
+                <path d="M14 3v4h4" />
+                <path d="M9 12h6M9 16h6" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Docs that stay current</h3>
+              <p class="card-text">
+                Write specs and notes next to the work they describe. Every doc keeps
+                its history, so you can see what changed and who changed it.
+              </p>
+              <a class="card-link" href="#">
+                Explore docs
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="17" rx="2.5" />
+                <path d="M8 2v4M16 2v4M3 9h18" />
+                <path d="m9 14 2 2 4-4" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Tasks with real owners</h3>
+              <p class="card-text">
+                Turn any line of a doc into a task with one click. Due dates and
+                owners show up on the board without anyone copying them across.
+              </p>
+              <a class="card-link" href="#">
+                Explore tasks
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 15a3 3 0 0 1-3 3H8l-4 3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3z" />
+                <path d="M8.5 9h7M8.5 12.5h4.5" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Chat that keeps context</h3>
+              <p class="card-text">
+                Threads live beside the doc or task they are about, so a decision made
+                on a Friday is still findable three months later.
+              </p>
+              <a class="card-link" href="#">
+                Explore chat
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m16.5 16.5 4 4" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">One search box for all of it</h3>
+              <p class="card-text">
+                Search runs across docs, tasks and threads at the same time. Filter
+                by person or by date when the first page is not enough.
+              </p>
+              <a class="card-link" href="#">
+                Explore search
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="4" y="10" width="16" height="11" rx="2.5" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                <path d="M12 14.5v2.5" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Permissions you set once</h3>
+              <p class="card-text">
+                Give a team access to a space and everything inside it follows.
+              </p>
+              <a class="card-link" href="#">
+                Explore permissions
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v10" />
+                <path d="m8 9 4 4 4-4" />
+                <path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">It reads your old tools</h3>
+              <p class="card-text">
+                Import from Notion, Confluence, Jira and Trello. The links between
+                imported pages are rewritten as they come across, so nothing you
+                click on dead-ends on the first day.
+              </p>
+              <a class="card-link" href="#">
+                Explore imports
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card section 2: the SAME card markup, arranged as wide rows by .card-list -->
+    <section class="section section-tinted" id="stories">
+      <div class="section-container">
+        <header class="section-head">
+          <p class="section-eyebrow">Guides</p>
+          <h2 class="section-heading">How teams actually set Nimbus up</h2>
+          <p class="section-subtext">
+            Short walkthroughs from teams who moved off four tools and wrote down
+            what worked.
+          </p>
+        </header>
+
+        <div class="card-list">
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/card-handoff.svg"
+                alt="A document on the left with an arrow pointing to a task board on the right" width="400"
+                height="300" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Running a handoff without a meeting</h3>
+              <p class="card-text">
+                Design finishes a doc, engineering picks up the tasks it produced.
+                No status call, no one asking where the latest version lives.
+              </p>
+              <a class="card-link" href="#">
+                Read the guide
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/card-standup.svg"
+                alt="A team activity view listing people with their updates and status labels" width="400" height="300"
+                loading="lazy" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Async standups your team will read</h3>
+              <p class="card-text">
+                A daily thread that pulls in yesterday's closed tasks automatically,
+                so people only write the part a machine cannot.
+              </p>
+              <a class="card-link" href="#">
+                Read the guide
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/card-search.svg"
+                alt="A search bar above two matching results, one a document and one a message" width="400" height="300"
+                loading="lazy" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Naming things so search finds them</h3>
+              <p class="card-text">
+                A small naming convention and a few tags turn a year of docs, tasks
+                and threads into something you can search in one box.
+              </p>
+              <a class="card-link" href="#">
+                Read the guide
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <a class="brand" href="#">
+        <span class="brand-mark">N</span>
+        Nimbus
+      </a>
+
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#stories">Guides</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <p class="footer-copyright">&copy; 2026 Nimbus. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
