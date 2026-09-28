@@ -33,9 +33,9 @@
               placeholder="0.00"
               inputmode="decimal"
               autocomplete="off"
-              aria-describedby="bill-error" />
+              aria-describedby="bill-note" />
           </div>
-          <p class="error" id="bill-error" role="alert"></p>
+          <p class="field-note" id="bill-note" aria-live="polite">The amount before tip.</p>
         </div>
 
         <div class="field">
@@ -53,10 +53,10 @@
               value="2"
               inputmode="numeric"
               autocomplete="off"
-              aria-describedby="people-error" />
+              aria-describedby="people-note" />
             <button class="counter-btn" type="button" id="people-plus" aria-label="One person more">+</button>
           </div>
-          <p class="error" id="people-error" role="alert"></p>
+          <p class="field-note" id="people-note" aria-live="polite">Anywhere from 1 to 99.</p>
         </div>
 
         <fieldset class="field tip-field">
@@ -81,11 +81,10 @@
               inputmode="decimal"
               autocomplete="off"
               aria-label="Custom tip percentage"
-              aria-describedby="tip-error" />
+              aria-describedby="tip-note" />
             <span class="input-suffix" aria-hidden="true">%</span>
           </div>
-          <p class="hint">Leave it empty and the tip is 0%.</p>
-          <p class="error" id="tip-error" role="alert"></p>
+          <p class="field-note" id="tip-note" aria-live="polite">Leave it empty and the tip is 0%.</p>
         </fieldset>
 
         <div class="actions">

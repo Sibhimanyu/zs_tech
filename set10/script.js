@@ -14,9 +14,7 @@ const plusBtn = document.getElementById("people-plus");
 const tipButtons = document.querySelectorAll(".tip-btn");
 const resetBtn = document.getElementById("reset");
 
-const billError = document.getElementById("bill-error");
-const peopleError = document.getElementById("people-error");
-const tipError = document.getElementById("tip-error");
+const fieldInputs = [billInput, peopleInput, tipInput];
 
 const emptyState = document.getElementById("result-empty");
 const resultBody = document.getElementById("result-body");
@@ -58,13 +56,23 @@ function readNumber(value, fallback) {
   return Number.isNaN(parsed) ? null : parsed;
 }
 
-function showError(input, errorEl, message) {
-  errorEl.textContent = message;
+// Each input points at its note through aria-describedby. The note starts out
+// holding the hint; an error swaps in, and clearing puts the hint back.
+function noteFor(input) {
+  return document.getElementById(input.getAttribute("aria-describedby"));
+}
+
+function showError(input, message) {
+  const note = noteFor(input);
+  note.textContent = message;
+  note.classList.add("is-error");
   input.classList.add("is-invalid");
 }
 
-function clearError(input, errorEl) {
-  errorEl.textContent = "";
+function clearError(input) {
+  const note = noteFor(input);
+  note.textContent = note.dataset.hint;
+  note.classList.remove("is-error");
   input.classList.remove("is-invalid");
 }
 
@@ -77,48 +85,48 @@ function readInputs() {
 
   const bill = readNumber(billInput.value, null);
   if (bill === null) {
-    showError(billInput, billError, "Enter the bill amount.");
+    showError(billInput, "Enter the bill amount.");
     valid = false;
   } else if (bill < 0) {
-    showError(billInput, billError, "The bill cannot be negative.");
+    showError(billInput, "The bill cannot be negative.");
     valid = false;
   } else if (bill === 0) {
-    showError(billInput, billError, "The bill must be more than 0.");
+    showError(billInput, "The bill must be more than 0.");
     valid = false;
   } else {
-    clearError(billInput, billError);
+    clearError(billInput);
   }
 
   const people = readNumber(peopleInput.value, null);
   if (people === null) {
-    showError(peopleInput, peopleError, "Enter how many people are sharing.");
+    showError(peopleInput, "Enter how many people are sharing.");
     valid = false;
   } else if (!Number.isInteger(people)) {
-    showError(peopleInput, peopleError, "People has to be a whole number.");
+    showError(peopleInput, "People has to be a whole number.");
     valid = false;
   } else if (people < MIN_PEOPLE) {
-    showError(peopleInput, peopleError, "There has to be at least 1 person.");
+    showError(peopleInput, "There has to be at least 1 person.");
     valid = false;
   } else if (people > MAX_PEOPLE) {
-    showError(peopleInput, peopleError, "That is more than " + MAX_PEOPLE + " people.");
+    showError(peopleInput, "That is more than " + MAX_PEOPLE + " people.");
     valid = false;
   } else {
-    clearError(peopleInput, peopleError);
+    clearError(peopleInput);
   }
 
   // An empty tip box is not an error, it just means 0%.
   const tip = readNumber(tipInput.value, 0);
   if (tip === null) {
-    showError(tipInput, tipError, "Tip has to be a number.");
+    showError(tipInput, "Tip has to be a number.");
     valid = false;
   } else if (tip < 0) {
-    showError(tipInput, tipError, "The tip cannot be negative.");
+    showError(tipInput, "The tip cannot be negative.");
     valid = false;
   } else if (tip > MAX_TIP) {
-    showError(tipInput, tipError, "Keep the tip at " + MAX_TIP + "% or below.");
+    showError(tipInput, "Keep the tip at " + MAX_TIP + "% or below.");
     valid = false;
   } else {
-    clearError(tipInput, tipError);
+    clearError(tipInput);
   }
 
   if (!valid) {
@@ -217,7 +225,7 @@ function stepPeople(direction) {
   const next = Math.min(MAX_PEOPLE, Math.max(MIN_PEOPLE, base + direction));
 
   peopleInput.value = next;
-  clearError(peopleInput, peopleError);
+  clearError(peopleInput);
   syncCounterButtons();
   recalculateIfLive();
 }
@@ -235,9 +243,7 @@ function resetAll() {
   form.reset();
   peopleInput.value = 2;
 
-  clearError(billInput, billError);
-  clearError(peopleInput, peopleError);
-  clearError(tipInput, tipError);
+  fieldInputs.forEach(clearError);
 
   hasCalculated = false;
   hideResult();
@@ -264,7 +270,7 @@ plusBtn.addEventListener("click", function () {
 tipButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     tipInput.value = button.dataset.tip;
-    clearError(tipInput, tipError);
+    clearError(tipInput);
     highlightTipPreset();
     recalculateIfLive();
   });
@@ -285,6 +291,11 @@ tipInput.addEventListener("input", function () {
 resetBtn.addEventListener("click", resetAll);
 
 // ------------------------------------------------------------------- start --
+
+fieldInputs.forEach(function (input) {
+  const note = noteFor(input);
+  note.dataset.hint = note.textContent;
+});
 
 highlightTipPreset();
 syncCounterButtons();
