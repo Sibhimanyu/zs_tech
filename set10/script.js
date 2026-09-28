@@ -12,7 +12,7 @@ const tipInput = document.getElementById("tip");
 const minusBtn = document.getElementById("people-minus");
 const plusBtn = document.getElementById("people-plus");
 const tipButtons = document.querySelectorAll(".tip-btn");
-const resetBtn = document.getElementById("reset");
+const resetBtn = document.getElementById("reset-btn");
 
 const fieldInputs = [billInput, peopleInput, tipInput];
 
