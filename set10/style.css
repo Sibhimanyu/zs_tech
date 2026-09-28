@@ -1,0 +1,470 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f7f7fb;
+  background-image: radial-gradient(ellipse 70% 60% at 50% 0%,
+      rgba(79, 70, 229, 0.16) 0%,
+      rgba(79, 70, 229, 0.05) 45%,
+      rgba(79, 70, 229, 0) 75%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #1a1f36;
+}
+
+/* ---------------------------------------------------------------- page ---- */
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+}
+
+.page-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.page-title {
+  margin: 14px 0 6px;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  margin: 0;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 1px 2px rgba(26, 31, 54, 0.04),
+    0 12px 28px rgba(26, 31, 54, 0.06);
+}
+
+/* --------------------------------------------------------------- fields ---- */
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.field-label {
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  color: #1a1f36;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.input:hover {
+  border-color: #9ca3af;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+}
+
+/* the number spinners fight with the +/- counter, so they go */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.has-prefix {
+  padding-left: 32px;
+}
+
+.has-suffix {
+  padding-right: 34px;
+}
+
+.input-prefix,
+.input-suffix {
+  position: absolute;
+  color: #6b7280;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.input-prefix {
+  left: 14px;
+}
+
+.input-suffix {
+  right: 14px;
+}
+
+.input.is-invalid {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+.error {
+  margin: 0;
+  min-height: 1.1em;
+  font-size: 0.82rem;
+  color: #dc2626;
+}
+
+/* -------------------------------------------------------------- counter ---- */
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter-btn {
+  flex: 0 0 44px;
+  height: 46px;
+  font-family: inherit;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: #4f46e5;
+  background: #eef2ff;
+  border: 1px solid #dfe3ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.counter-btn:hover {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: #ffffff;
+}
+
+.counter-btn:active {
+  transform: scale(0.94);
+}
+
+.counter-btn:disabled {
+  color: #9ca3af;
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.counter-input {
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------ tip ---- */
+
+.tip-field {
+  gap: 10px;
+}
+
+.tip-presets {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.tip-btn {
+  padding: 11px 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tip-btn:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4f46e5;
+}
+
+.tip-btn.is-active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------- buttons ---- */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  flex: 2;
+  color: #ffffff;
+  background: #4f46e5;
+  border: 1px solid #4f46e5;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.28);
+}
+
+.btn-primary:hover {
+  background: #4338ca;
+  border-color: #4338ca;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.34);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28);
+}
+
+.btn-ghost {
+  color: #4b5563;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+}
+
+.btn-ghost:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  color: #1a1f36;
+}
+
+.btn-ghost:active {
+  transform: translateY(1px);
+}
+
+/* one focus ring for everything that can be tabbed to */
+.btn:focus-visible,
+.tip-btn:focus-visible,
+.counter-btn:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------- result ---- */
+
+.result {
+  position: sticky;
+  top: 24px;
+  background: linear-gradient(160deg, #4f46e5 0%, #4338ca 100%);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 14px 34px rgba(67, 56, 202, 0.3);
+}
+
+.result-empty {
+  margin: 0;
+  padding: 24px 4px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+}
+
+.result-empty strong {
+  color: #ffffff;
+}
+
+.result-label {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.result-amount {
+  margin: 0 0 22px;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.breakdown {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+}
+
+.breakdown dt {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+}
+
+.breakdown dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.breakdown .muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.breakdown-total {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 1.05rem;
+}
+
+.rounding-note {
+  margin: 16px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* the number gets a small nudge whenever it changes */
+.result-amount.is-updated {
+  animation: pop 0.28s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ------------------------------------------------------------ responsive ---- */
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .result {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 36px 16px 56px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .tip-presets {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .result-amount {
+    font-size: 2.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -625,6 +625,35 @@ body {
   padding: 28px 32px;
 }
 
+/* Arrangement 3: the same card a third time. Two equal columns, and the first
+   card is told to run from the first grid line to the last, so it takes the
+   whole top row and the other two auto-place side by side underneath. */
+
+.card-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.card-split-wide {
+  grid-column: 1 / -1;
+}
+
+.card-split .card-media {
+  padding: 28px 28px 0;
+}
+
+.card-split .card-body {
+  padding-top: 20px;
+}
+
+/* The wide card is as wide as the section, so its paragraph gets a reading
+   width of its own instead of running the full line. */
+
+.card-split-wide .card-text {
+  max-width: 62ch;
+}
+
 /* Hover */
 
 .card:hover {
@@ -686,6 +715,13 @@ body {
   .card-grid {
     grid-template-columns: 1fr;
   }
+
+  /* The wide card still runs line to line, there is just one column left
+     for it to cover. */
+
+  .card-split {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -702,11 +738,13 @@ body {
     padding: 24px;
   }
 
-  .card-grid .card-media {
+  .card-grid .card-media,
+  .card-split .card-media {
     padding: 24px 24px 0;
   }
 
-  .card-grid .card-body {
+  .card-grid .card-body,
+  .card-split .card-body {
     padding-top: 18px;
   }
 }

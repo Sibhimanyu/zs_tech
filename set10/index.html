@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split It — Bill Splitter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page">
+    <header class="page-head">
+      <span class="brand-mark">S</span>
+      <h1 class="page-title">Split It</h1>
+      <p class="page-subtitle">Enter the bill, pick the tip, and see what everyone owes.</p>
+    </header>
+
+    <div class="layout">
+      <!-- ------------------------------- the form ------------------------------ -->
+      <form class="card calculator" id="bill-form" novalidate>
+        <div class="field">
+          <label class="field-label" for="bill">Bill amount</label>
+          <div class="input-wrap">
+            <span class="input-prefix" aria-hidden="true">₹</span>
+            <input
+              class="input has-prefix"
+              type="number"
+              id="bill"
+              name="bill"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+              inputmode="decimal"
+              autocomplete="off"
+              aria-describedby="bill-error" />
+          </div>
+          <p class="error" id="bill-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="people">Number of people</label>
+          <div class="counter">
+            <button class="counter-btn" type="button" id="people-minus" aria-label="One person fewer">&minus;</button>
+            <input
+              class="input counter-input"
+              type="number"
+              id="people"
+              name="people"
+              min="1"
+              max="99"
+              step="1"
+              value="2"
+              inputmode="numeric"
+              autocomplete="off"
+              aria-describedby="people-error" />
+            <button class="counter-btn" type="button" id="people-plus" aria-label="One person more">+</button>
+          </div>
+          <p class="error" id="people-error" role="alert"></p>
+        </div>
+
+        <fieldset class="field tip-field">
+          <legend class="field-label">Tip percentage</legend>
+          <div class="tip-presets" id="tip-presets">
+            <button class="tip-btn" type="button" data-tip="0">0%</button>
+            <button class="tip-btn" type="button" data-tip="5">5%</button>
+            <button class="tip-btn" type="button" data-tip="10">10%</button>
+            <button class="tip-btn" type="button" data-tip="15">15%</button>
+            <button class="tip-btn" type="button" data-tip="20">20%</button>
+          </div>
+          <div class="input-wrap tip-custom">
+            <input
+              class="input has-suffix"
+              type="number"
+              id="tip"
+              name="tip"
+              min="0"
+              max="100"
+              step="0.1"
+              placeholder="Custom"
+              inputmode="decimal"
+              autocomplete="off"
+              aria-label="Custom tip percentage"
+              aria-describedby="tip-error" />
+            <span class="input-suffix" aria-hidden="true">%</span>
+          </div>
+          <p class="hint">Leave it empty and the tip is 0%.</p>
+          <p class="error" id="tip-error" role="alert"></p>
+        </fieldset>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit" id="calculate">Calculate</button>
+          <button class="btn btn-ghost" type="button" id="reset">Reset</button>
+        </div>
+      </form>
+
+      <!-- ------------------------------ the result ----------------------------- -->
+      <section class="card result" id="result" aria-live="polite">
+        <p class="result-empty" id="result-empty">
+          Fill in the bill and press <strong>Calculate</strong> to see the split.
+        </p>
+
+        <div class="result-body" id="result-body" hidden>
+          <p class="result-label">Each person pays</p>
+          <p class="result-amount" id="per-person">₹0.00</p>
+
+          <dl class="breakdown">
+            <div class="breakdown-row">
+              <dt>Bill</dt>
+              <dd id="out-bill">₹0.00</dd>
+            </div>
+            <div class="breakdown-row">
+              <dt>Tip <span class="muted" id="out-tip-rate">(0%)</span></dt>
+              <dd id="out-tip">₹0.00</dd>
+            </div>
+            <div class="breakdown-row breakdown-total">
+              <dt>Total</dt>
+              <dd id="out-total">₹0.00</dd>
+            </div>
+            <div class="breakdown-row">
+              <dt>Split between</dt>
+              <dd id="out-people">2 people</dd>
+            </div>
+          </dl>
+
+          <p class="rounding-note" id="rounding-note" hidden></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
