@@ -2,18 +2,59 @@
   box-sizing: border-box;
 }
 
+/* Green-tinted paper, one deep green for anything you act on, and a forest
+   result card so the answer is the loudest thing on the page. */
+:root {
+  --canvas: oklch(96.9% 0.007 160);
+  --surface: oklch(99.5% 0.003 160);
+  --surface-sunk: oklch(94.8% 0.008 160);
+  --line: oklch(89.5% 0.01 160);
+  --line-strong: oklch(81% 0.013 160);
+  --line-hover: oklch(64% 0.016 160);
+
+  --ink: oklch(24% 0.025 165);
+  --ink-2: oklch(38% 0.022 165);
+  --ink-3: oklch(49% 0.018 165);
+  --ink-disabled: oklch(68% 0.012 165);
+
+  --accent: oklch(44% 0.095 162);
+  --accent-strong: oklch(37% 0.085 162);
+  --accent-soft: oklch(94.5% 0.03 162);
+  --accent-soft-line: oklch(87% 0.05 162);
+  --accent-ring: oklch(44% 0.095 162 / 0.2);
+
+  --danger: oklch(51% 0.17 28);
+  --danger-soft: oklch(96.6% 0.02 28);
+  --danger-ring: oklch(51% 0.17 28 / 0.18);
+
+  --result-bg: oklch(30% 0.055 165);
+  --result-ink: oklch(98% 0.008 160);
+  --result-ink-2: oklch(87% 0.055 158);
+  --result-ink-3: oklch(78% 0.065 158);
+  --result-line: oklch(42% 0.045 165);
+  --result-gold: oklch(86% 0.105 84);
+
+  --shadow: oklch(24% 0.025 165 / 0.06);
+  --shadow-faint: oklch(24% 0.025 165 / 0.04);
+}
+
+::selection {
+  background: var(--accent-soft-line);
+  color: var(--ink);
+}
+
+.result ::selection {
+  background: var(--result-gold);
+  color: var(--result-bg);
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #f7f7fb;
-  background-image: radial-gradient(ellipse 70% 60% at 50% 0%,
-      rgba(79, 70, 229, 0.16) 0%,
-      rgba(79, 70, 229, 0.05) 45%,
-      rgba(79, 70, 229, 0) 75%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #1a1f36;
+  background-color: var(--canvas);
+  color: var(--ink);
+  accent-color: var(--accent);
 }
 
 /* ---------------------------------------------------------------- page ---- */
@@ -36,8 +77,8 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #4f46e5;
-  color: #ffffff;
+  background: var(--accent);
+  color: var(--result-ink);
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -50,7 +91,7 @@ body {
 
 .page-subtitle {
   margin: 0;
-  color: #4b5563;
+  color: var(--ink-3);
   font-size: 1rem;
 }
 
@@ -62,12 +103,12 @@ body {
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px;
-  box-shadow: 0 1px 2px rgba(26, 31, 54, 0.04),
-    0 12px 28px rgba(26, 31, 54, 0.06);
+  box-shadow: 0 1px 2px var(--shadow-faint),
+    0 12px 28px var(--shadow);
 }
 
 /* --------------------------------------------------------------- fields ---- */
@@ -91,7 +132,7 @@ body {
   padding: 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--ink-2);
 }
 
 .input-wrap {
@@ -105,21 +146,26 @@ body {
   padding: 12px 14px;
   font-family: inherit;
   font-size: 1.05rem;
-  color: #1a1f36;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
+  color: var(--ink);
+  caret-color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
   border-radius: 10px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
+.input::placeholder {
+  color: var(--ink-3);
+}
+
 .input:hover {
-  border-color: #9ca3af;
+  border-color: var(--line-hover);
 }
 
 .input:focus {
   outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
 }
 
 /* the number spinners fight with the +/- counter, so they go */
@@ -145,7 +191,7 @@ body {
 .input-prefix,
 .input-suffix {
   position: absolute;
-  color: #6b7280;
+  color: var(--ink-3);
   font-size: 1rem;
   pointer-events: none;
 }
@@ -159,12 +205,12 @@ body {
 }
 
 .input.is-invalid {
-  border-color: #dc2626;
-  background: #fef2f2;
+  border-color: var(--danger);
+  background: var(--danger-soft);
 }
 
 .input.is-invalid:focus {
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
+  box-shadow: 0 0 0 3px var(--danger-ring);
 }
 
 /* One note per field, always rendered. It shows the hint, and an error takes
@@ -174,11 +220,11 @@ body {
   min-height: 1.4em;
   line-height: 1.4;
   font-size: 0.82rem;
-  color: #6b7280;
+  color: var(--ink-3);
 }
 
 .field-note.is-error {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 /* -------------------------------------------------------------- counter ---- */
@@ -195,18 +241,18 @@ body {
   font-family: inherit;
   font-size: 1.3rem;
   line-height: 1;
-  color: #4f46e5;
-  background: #eef2ff;
-  border: 1px solid #dfe3ff;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-soft-line);
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .counter-btn:hover {
-  background: #4f46e5;
-  border-color: #4f46e5;
-  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--result-ink);
 }
 
 .counter-btn:active {
@@ -214,9 +260,9 @@ body {
 }
 
 .counter-btn:disabled {
-  color: #9ca3af;
-  background: #f3f4f6;
-  border-color: #e5e7eb;
+  color: var(--ink-disabled);
+  background: var(--surface-sunk);
+  border-color: var(--line);
   cursor: not-allowed;
   transform: none;
 }
@@ -243,24 +289,24 @@ body {
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #374151;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
+  color: var(--ink-2);
+  background: var(--surface-sunk);
+  border: 1px solid var(--line);
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .tip-btn:hover {
-  background: #eef2ff;
-  border-color: #c7d2fe;
-  color: #4f46e5;
+  background: var(--accent-soft);
+  border-color: var(--accent-soft-line);
+  color: var(--accent);
 }
 
 .tip-btn.is-active {
-  background: #4f46e5;
-  border-color: #4f46e5;
-  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--result-ink);
 }
 
 /* --------------------------------------------------------------- buttons ---- */
@@ -284,33 +330,30 @@ body {
 
 .btn-primary {
   flex: 2;
-  color: #ffffff;
-  background: #4f46e5;
-  border: 1px solid #4f46e5;
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.28);
+  color: var(--result-ink);
+  background: var(--accent);
+  border: 1px solid var(--accent);
 }
 
 .btn-primary:hover {
-  background: #4338ca;
-  border-color: #4338ca;
-  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.34);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
 }
 
 .btn-primary:active {
   transform: translateY(1px);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28);
 }
 
 .btn-ghost {
-  color: #4b5563;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
 }
 
 .btn-ghost:hover {
-  background: #f3f4f6;
-  border-color: #9ca3af;
-  color: #1a1f36;
+  background: var(--surface-sunk);
+  border-color: var(--line-hover);
+  color: var(--ink);
 }
 
 .btn-ghost:active {
@@ -321,7 +364,7 @@ body {
 .btn:focus-visible,
 .tip-btn:focus-visible,
 .counter-btn:focus-visible {
-  outline: 2px solid #4f46e5;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -330,22 +373,22 @@ body {
 .result {
   position: sticky;
   top: 24px;
-  background: linear-gradient(160deg, #4f46e5 0%, #4338ca 100%);
-  border-color: transparent;
-  color: #ffffff;
-  box-shadow: 0 14px 34px rgba(67, 56, 202, 0.3);
+  background: var(--result-bg);
+  border: 0;
+  color: var(--result-ink);
+  box-shadow: 0 14px 34px oklch(30% 0.055 165 / 0.24);
 }
 
 .result-empty {
   margin: 0;
   padding: 24px 4px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--result-ink-2);
   line-height: 1.6;
 }
 
 .result-empty strong {
-  color: #ffffff;
+  color: var(--result-gold);
 }
 
 .result-label {
@@ -353,21 +396,23 @@ body {
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--result-ink-2);
 }
 
 .result-amount {
   margin: 0 0 22px;
   font-size: 2.6rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  color: var(--result-gold);
 }
 
 .breakdown {
   margin: 0;
   padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: 1px solid var(--result-line);
 }
 
 .breakdown-row {
@@ -379,7 +424,7 @@ body {
 }
 
 .breakdown dt {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--result-ink-2);
   font-size: 0.92rem;
 }
 
@@ -390,13 +435,13 @@ body {
 }
 
 .breakdown .muted {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--result-ink-3);
 }
 
 .breakdown-total {
   margin-top: 6px;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: 1px solid var(--result-line);
   font-size: 1.05rem;
 }
 
@@ -404,7 +449,7 @@ body {
   margin: 16px 0 0;
   font-size: 0.8rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--result-ink-3);
 }
 
 /* the number gets a small nudge whenever it changes */
